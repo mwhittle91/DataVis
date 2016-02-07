@@ -1,0 +1,160 @@
+<!DOCTYPE>
+<HTML>
+	<HEAD>
+	
+		<TITLE>
+		 Data Vis with JavaScript
+		</TITLE>
+
+		<LINK REL="stylesheet" HREF="css/style.css" />
+		
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		
+		<script type="text/javascript" src="js/code.js"></script>
+
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+	</HEAD>
+
+	<BODY ONLOAD = "initmap()">
+
+	<h1>Data Vis with JavaScript</h1>
+<BR>
+<h2>Matthew Whittle</h2>
+<BR>
+<p>
+  Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
+  <a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
+  deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
+</p>
+<p>
+  The map uses a mixture of JavaScript, Cascading Style Sheets (CSS) and HTML as well as using Leaflet and AJAX JavaScript plugins to help with the functionality. In this practical I will guide you through how to:
+<BR>
+<BR> 1) load in a leaflet map
+<BR> 2) Create a geoJson layer using QGIS
+<BR> 3) Load a geoJson layer into the map
+<BR> 4) Manipulate the geoJson for hover events
+<BR> 5) Create a popup window that displays more information
+<BR>
+</p>
+<h2>Step 1. Creating a Leaflet map</h2>
+<p>
+  Leaflet is a JavaScript plugin in for web mapping. We are going to use Leaflet instead of Google Maps API because Leaflet is open-source (free to use!) and lightweight (only 33KB).</p>
+<BR>
+<div id="map"></div>
+<BR>
+<p>
+  In order to create a map like the one above you first need to create a file called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
+  Lets test it - Copy and paste the following code into index.html :
+</p>
+
+<pre class="prettyprint lang-html">
+
+&lt!DOCTYPE&gt
+&ltHTML&gt
+ &ltHEAD&gt
+ 
+  &ltTITLE&gt
+   Data Vis with JavaScript
+  &lt/TITLE&gt
+  
+ &lt/HEAD&gt
+ 
+ &ltBODY&gt
+ 
+  Hello, World! 
+  
+ &lt/BODY&gt
+&lt/HTML&gt
+
+
+</pre>
+<p>
+This should create a web page with the title <a title="Hello, World!" target="_blank" href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, World!</a>
+on your screen when you visit http://www.personal.leeds.ac.uk/~'YOUR USERNAME'/WWW/index.html. Hello, World! is often used computer to test whether certain parts of the code are working correctly, have a look 
+at the wiki page linked. 
+<BR>
+<BR>
+<a title="Congratulations! You've just made a web page! " target="_blank" href="https://s-media-cache-ak0.pinimg.com/736x/8a/05/6b/8a056b1008905a8ffcbd492f0483feeb.jpg">Congratulations! You've just made a web page! </a>
+ Now lets start adding in the leaflet map. First you will have tell the web page to load the leaflet plugin and associated css along with creating a DIV element to hold the Leaflet map.
+ To do this copy and paste the following code into the head section of your index.html file :
+</p>
+
+<pre class="prettyprint lang-html">
+
+&lt!DOCTYPE&gt
+&ltHTML&gt
+ &ltHEAD&gt
+ 
+  &ltTITLE&gt
+   Data Vis with JavaScript
+  &lt/TITLE&gt
+ 
+  &ltscript src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"&gt&lt/script&gt
+		
+  &ltlink rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"&gt
+  
+ &lt/HEAD&gt
+ 
+ &ltBODY&gt
+ 
+  Hello, World! 
+  
+  &ltDIV id = "map"&gt&lt/DIV&gt
+  
+ &lt/BODY&gt
+&lt/HTML&gt
+
+
+</pre>
+
+<p>
+Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
+</p> 
+
+<pre class="prettyprint lang-js">
+
+function initmap() {
+	var map = L.map('map').setView([51.505, -0.09], 13);
+
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	  attribution: '&copy; &lta href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors'
+	}).addTo(map);
+
+	L.marker([51.5, -0.09]).addTo(map)
+	  .bindPopup('A pretty CSS3 popup.&ltbr&gt Easily customizable.')
+	  .openPopup();
+}
+
+
+</pre>
+<p>
+In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
+</p> 
+<pre class="prettyprint lang-css">
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+
+</pre>
+<p>
+Finally we need to tell the computer where to find the JavaScript and CSS in order to display the map, this is done in the same as loading in the leaflet plugin. Just copy and paste the code below into the 
+head section on index.html,ensure you have the correct file path, if the style.css and code.js files are in the same file as index.html then no file path is needed, just type the file name. 
+</p>
+<pre class="prettyprint lang-css">
+
+&ltLINK REL="stylesheet" HREF="style.css" /&gt
+&ltscript type="text/javascript" src="code.js"&gt&lt/script&gt
+
+
+</pre>
+<p>
+Well done! On your website you should now have a full screen map which you can pan and zoom around. 
+</p>
+</BODY>
+</HTML>
