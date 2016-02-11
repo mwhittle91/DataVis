@@ -14,6 +14,7 @@
 
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		
+<<<<<<< HEAD
 
 
 	</HEAD>
@@ -22,11 +23,22 @@
 	<div id="map"></div>
 <DIV id = "container">
 <DIV id = "text">
+=======
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+	</HEAD>
+
+	<BODY ONLOAD = "initmap()">
+
+>>>>>>> origin/master
 	<h1>Data Vis with JavaScript</h1>
 <BR>
 <h2>Matthew Whittle</h2>
 <BR>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 <p>
   Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
   <a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
@@ -42,6 +54,7 @@
 <BR> 5) Create a popup window that displays more information
 <BR>
 </p>
+<<<<<<< HEAD
 <BR>
 <h2>Step 1. Creating a Leaflet map</h2>
 <BR>
@@ -51,11 +64,19 @@
 
 
 
+=======
+<h2>Step 1. Creating a Leaflet map</h2>
+<p>
+  Leaflet is a JavaScript plugin in for web mapping. We are going to use Leaflet instead of Google Maps API because Leaflet is open-source (free to use!) and lightweight (only 33KB).</p>
+<BR>
+<div id="map"></div>
+>>>>>>> origin/master
 <BR>
 <p>
   In order to create a map like the one above you first need to create a file called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
   Lets test it - Copy and paste the following code into index.html :
 </p>
+<<<<<<< HEAD
 <BR>
 <pre>
 	<code>
@@ -79,6 +100,30 @@
 	</code>
 </pre>
 <BR>
+=======
+
+<pre class="prettyprint lang-html">
+
+&lt!DOCTYPE&gt
+&ltHTML&gt
+ &ltHEAD&gt
+ 
+  &ltTITLE&gt
+   Data Vis with JavaScript
+  &lt/TITLE&gt
+  
+ &lt/HEAD&gt
+ 
+ &ltBODY&gt
+ 
+  Hello, World! 
+  
+ &lt/BODY&gt
+&lt/HTML&gt
+
+
+</pre>
+>>>>>>> origin/master
 <p>
 This should create a web page with the title <a title="Hello, World!" target="_blank" href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, World!</a>
 on your screen when you visit http://www.personal.leeds.ac.uk/~'YOUR USERNAME'/WWW/index.html. Hello, World! is often used computer to test whether certain parts of the code are working correctly, have a look 
@@ -89,9 +134,14 @@ at the wiki page linked.
  Now lets start adding in the leaflet map. First you will have tell the web page to load the leaflet plugin and associated css along with creating a DIV element to hold the Leaflet map.
  To do this copy and paste the following code into the head section of your index.html file :
 </p>
+<<<<<<< HEAD
 <BR>
 <pre>
 <code>
+=======
+
+<pre class="prettyprint lang-html">
+>>>>>>> origin/master
 
 &lt!DOCTYPE&gt
 &ltHTML&gt
@@ -116,6 +166,7 @@ at the wiki page linked.
  &lt/BODY&gt
 &lt/HTML&gt
 
+<<<<<<< HEAD
 </code>
 </pre>
 <BR>
@@ -125,6 +176,16 @@ Next you will have to create a JavaScript function to in order to create the map
 <BR>
 <pre>
 <code>
+=======
+
+</pre>
+
+<p>
+Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
+</p> 
+
+<pre class="prettyprint lang-js">
+>>>>>>> origin/master
 
 function initmap() {
 	var map = L.map('map').setView([51.505, -0.09], 13);
@@ -138,6 +199,7 @@ function initmap() {
 	  .openPopup();
 }
 
+<<<<<<< HEAD
 </code>
 </pre>
 <BR>
@@ -147,26 +209,44 @@ In order to display the map we need to tell the browser what size we want the ma
 <BR>
 <pre>
 <code>
+=======
+
+</pre>
+<p>
+In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
+</p> 
+<pre class="prettyprint lang-css">
+>>>>>>> origin/master
 
 #map {
   height: 100%;
   width: 100%;
 }
 
+<<<<<<< HEAD
 </code>
 </pre>
 <BR>
+=======
+
+</pre>
+>>>>>>> origin/master
 <p>
 Finally we need to tell the computer where to find the JavaScript and CSS in order to display the map, this is done in the same as loading in the leaflet plugin. Just copy and paste the code below into the 
 head section on index.html,ensure you have the correct file path, if the style.css and code.js files are in the same file as index.html then no file path is needed, just type the file name. 
 </p>
+<<<<<<< HEAD
 <BR>
 <pre>
 <code>
+=======
+<pre class="prettyprint lang-css">
+>>>>>>> origin/master
 
 &ltLINK REL="stylesheet" HREF="style.css" /&gt
 &ltscript type="text/javascript" src="code.js"&gt&lt/script&gt
 
+<<<<<<< HEAD
 </code>
 </pre>
 <BR>
@@ -280,5 +360,12 @@ Now we will load the geojson that we created in R into the leaflet map.
 </p>
 </DIV>
 </DIV>
+=======
+
+</pre>
+<p>
+Well done! On your website you should now have a full screen map which you can pan and zoom around. 
+</p>
+>>>>>>> origin/master
 </BODY>
 </HTML>
