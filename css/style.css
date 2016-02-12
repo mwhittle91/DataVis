@@ -91,11 +91,9 @@ z-index: 1
 }
 
 #map {
-	position:absolute;
-	top: 0px;
-	width: 100%;
-	height: 1000%;
-	z-index: -1
+	width: 1000x;
+	height: 200px;
+	z-index: 99
 
 }
 
@@ -104,44 +102,3 @@ z-index: 1
 
 
 
-=======
-h1 {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 26.4px;
-}
-
-h2 {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 26.4px;
-}
-
-h3 {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 15.4px;
-}
-
-p {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-#map {
-  height: 180px;
-}
->>>>>>> origin/master

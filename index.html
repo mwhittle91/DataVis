@@ -1,86 +1,60 @@
 <!DOCTYPE>
 <HTML>
 	<HEAD>
-	
 		<TITLE>
-		 Data Vis with JavaScript
+			Data Vis with JavaScript
 		</TITLE>
-
 		<LINK REL="stylesheet" HREF="css/style.css" />
-		
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-		
 		<script type="text/javascript" src="js/code.js"></script>
-
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-		
-<<<<<<< HEAD
-
-
 	</HEAD>
-
-	<BODY ONLOAD = "initmap()"><center>
-	<div id="map"></div>
-<DIV id = "container">
-<DIV id = "text">
-=======
-		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
-	</HEAD>
-
 	<BODY ONLOAD = "initmap()">
+		<center>
 
->>>>>>> origin/master
-	<h1>Data Vis with JavaScript</h1>
-<BR>
-<h2>Matthew Whittle</h2>
-<BR>
-<<<<<<< HEAD
+		<DIV id = "container">
+			<DIV id = "text">
+				<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+				</HEAD>
+				<BODY ONLOAD = "initmap()">
+					<h1>Data Vis with JavaScript</h1>
+					<BR>
+					<h2>Matthew Whittle</h2>
+					<BR>
+					<p>
+						Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
+						<a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
+						deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
+					</p>
+					<p>
+						The map uses a mixture of JavaScript, Cascading Style Sheets (CSS) and HTML as well as using Leaflet and AJAX JavaScript plugins to help with the functionality. In this practical I will guide you through how to:
+						<BR>
+						<BR> 1) load in a leaflet map
+						<BR> 2) Create a geoJson layer using QGIS
+						<BR> 3) Load a geoJson layer into the map
+						<BR> 4) Manipulate the geoJson for hover events
+						<BR> 5) Create a popup window that displays more information
+						<BR>
+					</p>
+					<BR>
+					<h2>Step 1. Creating a Leaflet map</h2>
+					<BR>
+					<p>
+						Leaflet is a JavaScript plugin in for web mapping. We are going to use Leaflet instead of Google Maps API because Leaflet is open-source (free to use!) and lightweight (only 33KB).
+					</p>
+					<BR>
+					<BR>
 
-=======
->>>>>>> origin/master
-<p>
-  Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
-  <a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
-  deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
-</p>
-<p>
-  The map uses a mixture of JavaScript, Cascading Style Sheets (CSS) and HTML as well as using Leaflet and AJAX JavaScript plugins to help with the functionality. In this practical I will guide you through how to:
-<BR>
-<BR> 1) load in a leaflet map
-<BR> 2) Create a geoJson layer using QGIS
-<BR> 3) Load a geoJson layer into the map
-<BR> 4) Manipulate the geoJson for hover events
-<BR> 5) Create a popup window that displays more information
-<BR>
-</p>
-<<<<<<< HEAD
-<BR>
-<h2>Step 1. Creating a Leaflet map</h2>
-<BR>
-<p>
-  Leaflet is a JavaScript plugin in for web mapping. We are going to use Leaflet instead of Google Maps API because Leaflet is open-source (free to use!) and lightweight (only 33KB).</p>
-<BR>
+					<div id="map"></div>
 
-
-
-=======
-<h2>Step 1. Creating a Leaflet map</h2>
-<p>
-  Leaflet is a JavaScript plugin in for web mapping. We are going to use Leaflet instead of Google Maps API because Leaflet is open-source (free to use!) and lightweight (only 33KB).</p>
-<BR>
-<div id="map"></div>
->>>>>>> origin/master
-<BR>
-<p>
-  In order to create a map like the one above you first need to create a file called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
-  Lets test it - Copy and paste the following code into index.html :
-</p>
-<<<<<<< HEAD
-<BR>
-<pre>
+					<BR>
+					<p>
+						In order to create a map like the one above you first need to create a file called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
+						Lets test it - Copy and paste the following code into index.html.
+					</p>
+					<BR>
+					<pre>
 	<code>
-
 &lt!DOCTYPE&gt
  &ltHTML&gt
   &ltHEAD&gt
@@ -96,53 +70,22 @@
 
   &lt/BODY&gt
  &lt/HTML&gt
-
 	</code>
 </pre>
-<BR>
-=======
-
-<pre class="prettyprint lang-html">
-
-&lt!DOCTYPE&gt
-&ltHTML&gt
- &ltHEAD&gt
- 
-  &ltTITLE&gt
-   Data Vis with JavaScript
-  &lt/TITLE&gt
-  
- &lt/HEAD&gt
- 
- &ltBODY&gt
- 
-  Hello, World! 
-  
- &lt/BODY&gt
-&lt/HTML&gt
-
-
-</pre>
->>>>>>> origin/master
-<p>
-This should create a web page with the title <a title="Hello, World!" target="_blank" href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, World!</a>
-on your screen when you visit http://www.personal.leeds.ac.uk/~'YOUR USERNAME'/WWW/index.html. Hello, World! is often used computer to test whether certain parts of the code are working correctly, have a look 
-at the wiki page linked. 
-<BR>
-<BR>
-<a title="Congratulations! You've just made a web page! " target="_blank" href="https://s-media-cache-ak0.pinimg.com/736x/8a/05/6b/8a056b1008905a8ffcbd492f0483feeb.jpg">Congratulations! You've just made a web page! </a>
- Now lets start adding in the leaflet map. First you will have tell the web page to load the leaflet plugin and associated css along with creating a DIV element to hold the Leaflet map.
- To do this copy and paste the following code into the head section of your index.html file :
-</p>
-<<<<<<< HEAD
-<BR>
-<pre>
+					<BR>
+					<p>
+						This should create a web page with the title <a title="Hello, World!" target="_blank" href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">Hello, World!</a>
+						on your screen when you visit http://www.personal.leeds.ac.uk/~'YOUR USERNAME'/WWW/index.html. Hello, World! is often used computer to test whether certain parts of the code are working correctly, have a look 
+						at the wiki page linked. 
+						<BR>
+						<BR>
+						<a title="Congratulations! You've just made a web page! " target="_blank" href="https://s-media-cache-ak0.pinimg.com/736x/8a/05/6b/8a056b1008905a8ffcbd492f0483feeb.jpg">Congratulations! You've just made a web page! </a>
+						Now lets start adding in the leaflet map. First you will have tell the web page to load the leaflet plugin and associated css along with creating a DIV element to hold the Leaflet map.
+						To do this copy and paste the following code into the head section of your index.html file 
+					</p>
+					<BR>
+					<pre>
 <code>
-=======
-
-<pre class="prettyprint lang-html">
->>>>>>> origin/master
-
 &lt!DOCTYPE&gt
 &ltHTML&gt
  &ltHEAD&gt
@@ -152,11 +95,9 @@ at the wiki page linked.
   &lt/TITLE&gt
  
   &ltscript src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"&gt&lt/script&gt
-		
   &ltlink rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"&gt
   
  &lt/HEAD&gt
- 
  &ltBODY&gt
  
   Hello, World! 
@@ -165,134 +106,99 @@ at the wiki page linked.
   
  &lt/BODY&gt
 &lt/HTML&gt
-
-<<<<<<< HEAD
 </code>
-</pre>
-<BR>
-<p>
-Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
-</p> 
-<BR>
-<pre>
+					</pre>
+					<BR>
+					<p>
+						Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
+					</p>
+					<BR>
+					<pre>
 <code>
-=======
-
-</pre>
-
-<p>
-Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
-</p> 
-
-<pre class="prettyprint lang-js">
->>>>>>> origin/master
-
 function initmap() {
-	var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([51.505, -0.09], 13);
 
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	  attribution: '&copy; &lta href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors'
-	}).addTo(map);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+attribution: '&copy; &lta href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors'
+}).addTo(map);
 
-	L.marker([51.5, -0.09]).addTo(map)
-	  .bindPopup('A pretty CSS3 popup.&ltbr&gt Easily customizable.')
-	  .openPopup();
+L.marker([51.5, -0.09]).addTo(map)
+.bindPopup('A pretty CSS3 popup.&ltbr&gt Easily customizable.')
+.openPopup();
 }
-
-<<<<<<< HEAD
 </code>
-</pre>
-<BR>
-<p>
-In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
-</p> 
-<BR>
-<pre>
+					</pre>
+					<p>
+						Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
+					</p>
+					<BR>
+					<p>
+						In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
+					</p>
+					<BR>
+					<pre>
 <code>
-=======
-
-</pre>
-<p>
-In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
-</p> 
-<pre class="prettyprint lang-css">
->>>>>>> origin/master
-
 #map {
   height: 100%;
   width: 100%;
 }
-
-<<<<<<< HEAD
 </code>
-</pre>
-<BR>
-=======
-
-</pre>
->>>>>>> origin/master
-<p>
-Finally we need to tell the computer where to find the JavaScript and CSS in order to display the map, this is done in the same as loading in the leaflet plugin. Just copy and paste the code below into the 
-head section on index.html,ensure you have the correct file path, if the style.css and code.js files are in the same file as index.html then no file path is needed, just type the file name. 
-</p>
-<<<<<<< HEAD
-<BR>
-<pre>
+					</pre>
+					<p>
+						Finally we need to tell the computer where to find the JavaScript and CSS in order to display the map, this is done in the same as loading in the leaflet plugin. Just copy and paste the code below into the 
+						head section on index.html,ensure you have the correct file path, if the style.css and code.js files are in the same file as index.html then no file path is needed, just type the file name. 
+					</p>
+					<BR>
+					<pre>
 <code>
-=======
-<pre class="prettyprint lang-css">
->>>>>>> origin/master
-
 &ltLINK REL="stylesheet" HREF="style.css" /&gt
 &ltscript type="text/javascript" src="code.js"&gt&lt/script&gt
-
-<<<<<<< HEAD
 </code>
-</pre>
-<BR>
-<p>
-Well done! On your website you should now have a full screen map which you can pan and zoom around. 
-</p>
-<BR>
-<h2>Step 2. Making the data in R</h2>
-<BR>
-<p>
-In order to display data on our web page we first need to create some data. To do this we will join 2 datasets together, one data set has our aggregated data in and another one has spatial information. These
-2 files will be combined using R and saved as a geojson file which can then be read into our web page. 
-<BR>
-<BR>
-Download the files  <a href="http://www.personal.leeds.ac.uk/~gy14mw/dataVis/data/data.zip" >here</a>
-<BR>
-<BR>
-In these files we have 2 data sources but many files. This is because out spatial data is in the form of a shapefile, these files are compromised of several files and you must keep all of the associated together in the same folder
-otherwise the data will become corrupt and unusable. The other file is a .csv file, open this up in excel and have a look at the data. 
-<BR>
-<BR>
-Open RStudio (if you are on your own laptop please download it <a title="here" href="https://www.rstudio.com/products/rstudio/download/">here</a>). RStudio is a free open source IDE for the R programming language, it makes
-programming in R far easier as it has inbuilt debugging and visualisation tools. 
-<BR> 
-<BR>
-In R we are going to do the following: 
-<BR>
-<BR> 1) read in the shapefile
-<BR> 2) Read in the .csv
-<BR> 3) Join the 2 files together
-<BR> 4) save the output as a geojson 
-<BR> 5) Do some simple querying (we might as well while we are here!)
-<BR>
-<BR>
-</p>
-<p>
-The following code carries out steps 1 2 3 and in the sequence above. Copy and paste the code below (edit the filepath and filename sections)
-into RStudio to run the code highlight the code and press control and enter. You should end up with a plot of the UK and a 
-variable called data in the objects list, click on this and you should see the data magically appear in R. The next line joins UK to data via
-the common column of data in ZONE_LABEL. The following line tells the computer to save the newly created merged file as a geojson. 
-<BR>
-<BR> 
-See coding isn't difficult after all! In the space of 4 lines of code you read in 2 files, joined them up and read the data out in a new format.
-</p>
-<BR>
-<pre>
+					</pre>
+					<BR>
+					<p>
+						Well done! On your website you should now have a full screen map which you can pan and zoom around. 
+					</p>
+					<BR>
+					<h2>Step 2. Making the data in R</h2>
+					<BR>
+					<p>
+						In order to display data on our web page we first need to create some data. To do this we will join 2 datasets together, one data set has our aggregated data in and another one has spatial information. These
+						2 files will be combined using R and saved as a geojson file which can then be read into our web page. 
+						<BR>
+						<BR>
+						Download the files  <a href="http://www.personal.leeds.ac.uk/~gy14mw/dataVis/data/data.zip" >here</a>
+						<BR>
+						<BR>
+						In these files we have 2 data sources but many files. This is because out spatial data is in the form of a shapefile, these files are compromised of several files and you must keep all of the associated together in the same folder
+						otherwise the data will become corrupt and unusable. The other file is a .csv file, open this up in excel and have a look at the data. 
+						<BR>
+						<BR>
+						Open RStudio (if you are on your own laptop please download it <a title="here" href="https://www.rstudio.com/products/rstudio/download/">here</a>). RStudio is a free open source IDE for the R programming language, it makes
+						programming in R far easier as it has inbuilt debugging and visualisation tools. 
+						<BR> 
+						<BR>
+						In R we are going to do the following: 
+						<BR>
+						<BR> 1) read in the shapefile
+						<BR> 2) Read in the .csv
+						<BR> 3) Join the 2 files together
+						<BR> 4) save the output as a geojson 
+						<BR> 5) Do some simple querying (we might as well while we are here!)
+						<BR>
+						<BR>
+					</p>
+					<p>
+						The following code carries out steps 1 2 3 and in the sequence above. Copy and paste the code below (edit the filepath and filename sections)
+						into RStudio to run the code highlight the code and press control and enter. You should end up with a plot of the UK and a 
+						variable called data in the objects list, click on this and you should see the data magically appear in R. The next line joins UK to data via
+						the common column of data in ZONE_LABEL. The following line tells the computer to save the newly created merged file as a geojson. 
+						<BR>
+						<BR> 
+						See coding isn't difficult after all! In the space of 4 lines of code you read in 2 files, joined them up and read the data out in a new format.
+					</p>
+					<BR>
+					<pre>
 <code>
 install.packages("rgdal")
 library(rgdal)
@@ -307,20 +213,20 @@ UK_Data <- merge(x = UK, y = data, by = "ZONE_CODE", all = TRUE)
 
 writeOGR(UK_Data, 'C:/Users/Matt/Downloads/data/UK_Data.geojson', layer="UK_Data", driver="GeoJSON")
 </code>
-</pre>
-<BR>
-<p>
-While we are in R we'll look at some simple features. Copy and paste the code below to see how we can use the R programming language to query 
-data and produce other visualisations such as graphs. 
-<BR>
-<BR>
-In the example below we create a quick map from some subsets. The map finds areas where the inactivity rate is > 60 % and colours these red,
-The next subset looks at two variables and finds where the inactivity is above 65% and the percentage of people who drive to work is above 45%, 
-these areas are then coloured blue. 
-<BR>
-<BR>
-</p>
-<pre>
+					</pre>
+					<BR>
+					<p>
+						While we are in R we'll look at some simple features. Copy and paste the code below to see how we can use the R programming language to query 
+						data and produce other visualisations such as graphs. 
+						<BR>
+						<BR>
+						In the example below we create a quick map from some subsets. The map finds areas where the inactivity rate is > 60 % and colours these red,
+						The next subset looks at two variables and finds where the inactivity is above 65% and the percentage of people who drive to work is above 45%, 
+						these areas are then coloured blue. 
+						<BR>
+						<BR>
+					</p>
+					<pre>
 <code>
 summary(UK_Data)
 
@@ -334,38 +240,80 @@ multiselection <- subset(UK_Data, data_Inact > 65 & data_Drive > 45)
 
 plot(multiselection, col= "blue", add = TRUE)
 </code>
-</pre>
-<p>
-<BR>
-In the next example we will make a quick scatter plot using the plotly library. Try playing around with the x and y data to produce some interesting graphs, also try to create a subset
-so the graph excludes Scottish and Welsh data as we don't have all the data for these regions. Have a look at the plotly library and have a go at producing 
-some other graphs. 
-<BR>
-<BR>
-</p>
-<pre>
+					</pre>
+					<p>
+						<BR>
+						<BR>
+						In the next example we will make a quick scatter plot using the plotly library. Try playing around with the x and y data to produce some interesting graphs, also try to create a subset
+						so the graph excludes Scottish and Welsh data as we don't have all the data for these regions. Have a look at the plotly library and have a go at producing 
+						some other graphs. 
+						<BR>
+						<BR>
+					</p>
+					<pre>
 <code>
 install.packages("plotly")
 library(plotly)
 plot_ly(data = data, x = data_Inact, y = data_CO2, mode = "markers")
 </code>
-</pre>
-<BR>
-<BR>
-<h2>Step 3. Loading a geojson into the web page</h2>
-<BR>
-<p>
-Now we will load the geojson that we created in R into the leaflet map. 
-
-</p>
-</DIV>
-</DIV>
-=======
-
-</pre>
-<p>
-Well done! On your website you should now have a full screen map which you can pan and zoom around. 
-</p>
->>>>>>> origin/master
-</BODY>
+					</pre>
+					<BR>
+					<BR>
+					<h2>Step 3. Alternitive to R - QGIS. </h2>
+					<BR>
+					<p>
+						If coding scares you a bit and you'd prefer to see what you are doing then QGIS is the best way forward. QGIS is a GIS software package, again open source (starting to see a trend?), that allows
+						the mapping of spatial data and geospatial queries.
+						
+						To create the data download the source data <a href="http://www.personal.leeds.ac.uk/~gy14mw/dataVis/data/data.zip" >here</a>. Open up QGIS and load in the shapefile from the source data by clicking
+						this button. Navigate to the file UK_LA.shp and open it. You should now have an image of the UK on your screen.
+						<BR>
+						<BR>
+							<img src="images/qgis1.png" alt="qgis1" style="width:1000px;height:500px;">
+						<BR>
+						<BR>
+						Next we will load in the data. To do this click on the comma that you can see on the right hand pane and load in the data, ensure that you choose the UK_data.csv, you should get a similar screen to
+						below. Hint - this data has no geometry...
+						<BR>
+						<BR>
+							<img src="images/qgis2.png" alt="qgis2" style="width:1000px;height:500px;">
+						<BR>
+						<BR>
+						We now need to join the two layers together. Right click on the UK_LA layer and select properties, navigate to the join section on the new pane. Your screen should look like this. Ensure that you  
+						are basing your join on the UK_Data layer via the common column name ZONE_CODE. Don't forget to apply the join on the properties window pane. 
+						<BR>
+						<BR>
+							<img src="images/qgis3.png" alt="qgis2" style="width:1000px;height:500px;">
+						<BR>
+						<BR>
+						To test if the join has worked right click on the UK_LA layer and select attribute table, you should see that the contents of UK_Data is now attached to UK_LA. If this has worked then right click on 
+						the UK_LA layer and click save as. You should save this as a geojson layer and select the coordinate projection as WGS84 NOT British National Grid. I'm going to call my file UK_Data.geojson you 
+						might also want too...
+						<BR>
+						<BR>
+						Well done! You've mastered QGIS! You can now put Cartographer on your CV!
+					</p>
+					<BR>
+					<BR>
+					<h2>Step 4. Loading your geojson layer into the webpage </h2>
+					<p>
+					<BR>
+					<BR>
+					From here on you will want the javascript file on your screen (the one we made on step 1). The code below reads in the geojson that you created in step 2 or 3. 
+					<BR>
+					<BR>
+					</p>
+					<h2>Step 5. Enable hover events on your geojson </h2>
+					<p>
+					<BR>
+					<BR>
+					</p>
+					<h2>Step 6. Add click events on your geojson </h2>
+					<p>
+					<BR>
+					<BR>
+					</p>
+			</DIV>
+		</DIV>
+	</BODY>
 </HTML>

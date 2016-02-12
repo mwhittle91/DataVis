@@ -8,13 +8,8 @@ function initmap() {
 	}).addTo(map);
 
 	L.marker([51.5, -0.09]).addTo(map)
-<<<<<<< HEAD
+
 	  .bindPopup('<h3>A pretty CSS3 popup.<br> Easily customizable.</h3>')
 	  .openPopup();
-	  
 
-=======
-	  .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-	  .openPopup();
->>>>>>> origin/master
 }
