@@ -26,6 +26,12 @@
 						<a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
 						deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
 					</p>
+					<p> This interactive tutorial relies on a great example provided by leaflet, after the tutorial go and have a look at
+					<a title="this website" target="_blank" href="http://leafletjs.com/examples/choropleth.html">this</a> example and the other demonstrations to help get a sense of what you  can do with the leaflet plugin.
+					a great extenstion is also availible for leaflet through mapbox, if you enjoyed this tutorial then I would suggest having a look at 
+					<a title="this website" target="_blank" href="https://www.mapbox.com/">mapbox</a> as it adds on a lot of extra functionality  to leaflet.
+					</p>
+					
 					<p>
 						The map uses a mixture of JavaScript, Cascading Style Sheets (CSS) and HTML as well as using Leaflet and AJAX JavaScript plugins to help with the functionality. In this practical I will guide you through how to:
 						<BR>
@@ -33,7 +39,7 @@
 						<BR> 2) Create a geoJson layer using QGIS
 						<BR> 3) Load a geoJson layer into the map
 						<BR> 4) Manipulate the geoJson for hover events
-						<BR> 5) Create a popup window that displays more information
+						<BR> 5) Create a panel to display more info 
 						<BR>
 					</p>
 					<BR>
@@ -115,6 +121,9 @@
 					<BR>
 					<pre>
 <code>
+
+
+
 function initmap() {
 var map = L.map('map').setView([51.505, -0.09], 13);
 
@@ -299,17 +308,202 @@ plot_ly(data = data, x = data_Inact, y = data_CO2, mode = "markers")
 					<p>
 					<BR>
 					<BR>
-					From here on you will want the javascript file on your screen (the one we made on step 1). The code below reads in the geojson that you created in step 2 or 3. 
+					Open the geojson layer that you created in step 3 or 2 in notepad++. Here you want to create a variable that can be called in to JavaScript function.  To do this type "var data =" before the geojson data
+					and save the file as data.js, ensure you change the filetype to javascript. Next include a link in the head of the html like the line below. 
 					<BR>
 					<BR>
-					</p>
+					<pre>
+<code>
+&ltscript type="text/javascript" src="data.js"&gt&lt/script&gt
+</code>
+					</pre>
+					<p>
+					<BR>
+					<BR> In order to read in the data you need to add the new variable which stores the geojson data to the Leaflet map. In order to do this paste the code below in code.js
+					<BR>
+					<BR>
+					<pre>
+<code>
+L.geoJson(data).addTo(map);
+</code>
+					</pre>
+					<p>
+					<BR>
+					<BR> Now go onto the internet and see if the geojson is visible on the webpage, you should have the a blue UK split into local authorities.
+					<BR>
+					<BR>In order to make the map colourful you can use the code below to create a cloropleth map (remove the previous line of code), where the colour of the map represents the value of one of the variables in the data. This code will
+					draw the percentage of people who drive to work for each local authority. Try finding the piece of code that points to this data and changing the variable which is being mapped. 
+					<BR>
+					<BR>
+					<pre>
+<code>
+function getColor(d) {
+    return d > 50 	 ? '#800026' :
+           d > 40 	 ? '#BD0026' :
+           d > 35 	 ? '#E31A1C' :
+           d > 30 	 ? '#FC4E2A' :
+           d > 25    	 ? '#FD8D3C' :
+           d > 20        ? '#FEB24C' :
+           d > 10        ? '#FED976' :
+			    #FFEDA0';
+}
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.data_Drive),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+L.geoJson(data, {style: style}).addTo(map);
+</code>
+					</pre>
+					<BR>
+					<BR>
 					<h2>Step 5. Enable hover events on your geojson </h2>
 					<p>
 					<BR>
+					<BR> Now we will add some interactive functions to our map. The code below will highlight whichever local authority that you are hovering over. Copy and paste this below your previous code.
 					<BR>
-					</p>
-					<h2>Step 6. Add click events on your geojson </h2>
+					<BR>
+					<pre>
+<code>
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+</code>
+					</pre>
 					<p>
+					<BR> 
+					<BR> 
+					You may have noticed some unusaul behaviour after using the last piece of code. That is becuase the geojson is not accessible yet through a variable. Fix this by creating a variable called geojson
+					before the listeners that you have just created. 
+					<BR> 
+					<BR> 
+					Lets add some extra functions. Copy and paste the code below and try to find out what it is doing. HINT you will need to replace a previous line of code. 
+					<BR> 
+					<BR>
+					<pre>
+<code>
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+geojson = L.geoJson(statesData, {
+    style: style,
+    onEachFeature: onEachFeature
+}).addTo(map);
+</code>
+					</pre>
+					<h2>Step 6. Create a panel to display more info </h2>
+					<p>
+					<BR>
+					<BR> Copy and paste the following code into you code.js, this will create 
+					<pre>
+					<BR>
+					<BR>
+<code>
+var info = L.control();
+
+info.update = function (props) {
+    this._div.innerHTML = 
+	
+		  (props ?
+        '&ltb>&lth1>' + props.ZONE_LABEL + '&lt/h1>&lt/b>'
+        : '-') +
+	
+	'&lth4>CO2  emissions&lt/h4>' +  (props ?
+        '&lth3>&ltb>' + props.data_CO2 + ' tonnes&lt/h3>&lt/b>'
+        : '-') +
+		
+	'&lth4>Drive to work&lt/h4>' + ( props ?
+        '&lth3>&ltb>' + props.data_Drive + ' %&lt/h3>&lt/b>'
+        : '-' ) +	
+	
+	'&lth4>Cycle to work&lt/h4>' + ( props ?
+        '&lth3>&ltb>' + props.data_Cycle + ' %&lt/h3>&lt/b>'
+        : '-' ) +
+	
+	'&lth4>Inactive&lt/h4>' + ( props ?
+        '&lth3>&ltb>' + props.data_Inact + ' %&lt/h3>&lt/b>'
+        : '-' ) +
+				
+};
+
+info.addTo(map);
+</code>
+					</pre>
+					<p>
+					<BR>
+					<BR> We also need to update the control when the the cursor is hovered over a local authority, so we need to change the hover listeners, add the following lines of code to the listeners. 
+					<pre>
+					<BR>
+					<BR>
+<code>
+function highlightFeature(e) {
+    ...
+    info.update(layer.feature.properties);
+}
+
+function resetHighlight(e) {
+    ...
+    info.update();
+}
+</code>
+					</pre>
+					<p>
+					<BR>
+					<BR> The control box is in need of some styling, copy and paste this code into you css file. 
+					<pre>
+					<BR>
+					<BR>
+<code>
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+
+</code>
+					</pre>
+					<p>
+					<BR>
+					<BR> Congratulations! you've created your first interactive leaflet map! Have a play around with the site and try adding in things and changing bits of the site.  
 					<BR>
 					<BR>
 					</p>
@@ -317,3 +511,34 @@ plot_ly(data = data, x = data_Inact, y = data_CO2, mode = "markers")
 		</DIV>
 	</BODY>
 </HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
