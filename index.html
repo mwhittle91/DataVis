@@ -5,18 +5,21 @@
 			Data Vis with JavaScript
 		</TITLE>
 		<LINK REL="stylesheet" HREF="css/style.css" />
+		<LINK REL="stylesheet" HREF="css/mapExample.css" />
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 		<script type="text/javascript" src="js/code.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript" src="js/mapExample.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	</HEAD>
-	<BODY ONLOAD = "initmap()">
+	<BODY ONLOAD = "initmap(); exampleMap()">
 		<center>
 
 		<DIV id = "container">
 			<DIV id = "text">
 				<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 				</HEAD>
-				<BODY ONLOAD = "initmap()">
+				<BODY ONLOAD = "initmap(); mapExample()">
 					<h1>Data Vis with JavaScript</h1>
 					<BR>
 					<h2>Matthew Whittle</h2>
@@ -416,7 +419,7 @@ function onEachFeature(feature, layer) {
     });
 }
 
-geojson = L.geoJson(statesData, {
+geojson = L.geoJson(data, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(map);
@@ -453,7 +456,7 @@ info.update = function (props) {
 	
 	'&lth4>Inactive&lt/h4>' + ( props ?
         '&lth3>&ltb>' + props.data_Inact + ' %&lt/h3>&lt/b>'
-        : '-' ) +
+        : '-' ) 
 				
 };
 
@@ -506,24 +509,12 @@ function resetHighlight(e) {
 					<BR> Congratulations! you've created your first interactive leaflet map! Have a play around with the site and try adding in things and changing bits of the site.  
 					<BR>
 					<BR>
+					<div id="mapExample"></div>
 					</p>
 			</DIV>
 		</DIV>
 	</BODY>
 </HTML>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
