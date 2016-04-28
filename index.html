@@ -6,11 +6,21 @@
 		</TITLE>
 		<LINK REL="stylesheet" HREF="css/style.css" />
 		<LINK REL="stylesheet" HREF="css/mapExample.css" />
+		<LINK REL="stylesheet" HREF="css/mapExample.css" />
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 		<script type="text/javascript" src="js/code.js"></script>
 		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript" src="js/mapExample.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<script src="js/Leaflet.Sleep.js"></script>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
+		<script src="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+	
+
+	
 	</HEAD>
 	<BODY ONLOAD = "initmap(); exampleMap()">
 		<center>
@@ -23,11 +33,30 @@
 					<h1>Data Vis with JavaScript</h1>
 					<BR>
 					<h2>Matthew Whittle</h2>
+					<p>
+					<a href="https://github.com/mwhittle91"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+					<BR>
+					<BR>
+					<a href="https://twitter.com/mwhittle91" class="twitter-follow-button" data-show-count="FALSE">Follow @mwhittle91</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script
+					
+					<BR>
+					<BR>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-show-count="TRUE" data-url="http://www.personal.leeds.ac.uk/~gy14mw//DataVis/" data-text="awesome tutorial for data visualisation!" data-via="mwhittle91">Share this!</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					<BR>
+
+					<BR>
+					<BR>
+					</p>
+					<p><a href="https://www.facebook.com/groups/Leedsdatasoc/"  data-show-count="false">JOIN DATA SOC ON FACEBOOK!!!! </a></p>
+					<BR>
+					<BR>
 					<BR>
 					<p>
-						Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
-						<a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
-						deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
+					Take a quick look at <a title="this website" target="_blank" href="http://www.roadsafetyweek.org.uk/drivelessmap/">this website</a>. This is a map that I created for Road Safety Week 2015 in collaboration with a road safety charity called 
+					<a title="Brake" href="http://www.brake.org.uk/">Brake</a>.They came to me via my supervisor has they wanted some maps to provide evidence in the relationship between active transport (cycling and walking), car use and
+					deaths due to air quality. Rather than producing a static map I decided that a more interactive tool would be best as people tend to look at their home environment rather than the UK as a whole.
 					</p>
 					<p> This interactive tutorial relies on a great example provided by leaflet, after the tutorial go and have a look at
 					<a title="this website" target="_blank" href="http://leafletjs.com/examples/choropleth.html">this</a> example and the other demonstrations to help get a sense of what you  can do with the leaflet plugin.
@@ -39,7 +68,8 @@
 						The map uses a mixture of JavaScript, Cascading Style Sheets (CSS) and HTML as well as using Leaflet and AJAX JavaScript plugins to help with the functionality. In this practical I will guide you through how to:
 						<BR>
 						<BR> 1) load in a leaflet map
-						<BR> 2) Create a geoJson layer using QGIS
+						<BR> 2a) Create data in R and have a play around
+						<BR> 2b) Create a geoJson layer using QGIS
 						<BR> 3) Load a geoJson layer into the map
 						<BR> 4) Manipulate the geoJson for hover events
 						<BR> 5) Create a panel to display more info 
@@ -58,7 +88,7 @@
 		
 					<BR>
 					<p>
-						In order to create a map like the one above you first need to create a file called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
+						In order to create a map like the one above you first need to create a folder called WWW in your M drive. After this open Notepad ++ and create a file named index.html (ensure you change the file type to html and not left as .txt in the dropdown box). Now
 						Lets test it - Copy and paste the following code into index.html.
 					</p>
 					<BR>
@@ -107,7 +137,7 @@
   &ltlink rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"&gt
   
  &lt/HEAD&gt
- &ltBODY&gt
+ &ltBODY onload = 'initmap()'&gt
  
   Hello, World! 
   
@@ -128,21 +158,17 @@
 
 
 function initmap() {
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([53.7997, 1.5492], 13);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 attribution: '&copy; &lta href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors'
 }).addTo(map);
-
-L.marker([51.5, -0.09]).addTo(map)
-.bindPopup('A pretty CSS3 popup.&ltbr&gt Easily customizable.')
-.openPopup();
 }
+
 </code>
 					</pre>
-					<p>
-						Next you will have to create a JavaScript function to in order to create the map. Go to Notepad++ and create a JavaScript file called code. Now copy the code below into your new code.js file
-					</p>
+
+					
 					<BR>
 					<p>
 						In order to display the map we need to tell the browser what size we want the map, this is done using CSS. In Notepad++ create a file called style.css and the paste in the code below. 
@@ -172,7 +198,7 @@ L.marker([51.5, -0.09]).addTo(map)
 						Well done! On your website you should now have a full screen map which you can pan and zoom around. 
 					</p>
 					<BR>
-					<h2>Step 2. Making the data in R</h2>
+					<h2>Step 2a. Making the data in R</h2>
 					<BR>
 					<p>
 						In order to display data on our web page we first need to create some data. To do this we will join 2 datasets together, one data set has our aggregated data in and another one has spatial information. These
@@ -271,7 +297,7 @@ plot_ly(data = data, x = data_Inact, y = data_CO2, mode = "markers")
 					</pre>
 					<BR>
 					<BR>
-					<h2>Step 3. Alternitive to R - QGIS. </h2>
+					<h2>Step 2b. Alternative to R - QGIS. </h2>
 					<BR>
 					<p>
 						If coding scares you a bit and you'd prefer to see what you are doing then QGIS is the best way forward. QGIS is a GIS software package, again open source (starting to see a trend?), that allows
@@ -348,12 +374,14 @@ function getColor(d) {
            d > 25    	 ? '#FD8D3C' :
            d > 20        ? '#FEB24C' :
            d > 10        ? '#FED976' :
-			    #FFEDA0';
+			    '#FFEDA0';
 }
 
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.data_Drive),
+	// the data_Drive part of this code may differ depending on how you created the data
+	//, look at your data.js to get the correct name
+        fillColor: getColor(feature.properties.UK_data_data_Drive), 
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -435,6 +463,12 @@ geojson = L.geoJson(data, {
 <code>
 var info = L.control();
 
+info.onAdd = function (mapExample) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
 info.update = function (props) {
     this._div.innerHTML = 
 	
@@ -510,6 +544,11 @@ function resetHighlight(e) {
 					<BR>
 					<BR>
 					<div id="mapExample"></div>
+					<BR>
+					<BR>
+					<p>
+					In case you didn't get all the way through the tutorial you can download all of the files 
+					 <a href="http://www.personal.leeds.ac.uk/~gy14mw/dataVis/example.zip" >here</a>
 					</p>
 			</DIV>
 		</DIV>

@@ -1,13 +1,38 @@
 var info
 
 function exampleMap() {
-var mapExample = L.map('mapExample').setView([54.505, -0.09], 5);
+var mapExample = L.map('mapExample', {
+	fullscreenControl: true
+	}
+	).setView([54.505, -0.09], 5);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors'
+attribution: '&copy; <a href="http://osm.org/copyright"&gtOpenStreetMap&lt/a&gt contributors',
+	    // true by default, false if you want a wild map
+	sleep: true,
+
+	// time(ms) for the map to fall asleep upon mouseout
+	sleepTime: 750,
+
+	// time(ms) until map wakes on mouseover
+	wakeTime: 750,
+
+	// defines whether or not the user is prompted oh how to wake map
+	sleepNote: false,
+
+	// should hovering wake the map? (clicking always will)
+	hoverToWake: false,
+	
+	
+}).addTo(mapExample);
+
+var lcb = L.control.locate({
+	stopFollowingOnDrag: true, // stop following when the map is dragged if `follow` is true (deprecated, see below)
+    remainActive: false,
 }).addTo(mapExample);
 
 
+//mapExample.addControl( new L.Control.Compass() );
 
 
 function getColor(d) {
